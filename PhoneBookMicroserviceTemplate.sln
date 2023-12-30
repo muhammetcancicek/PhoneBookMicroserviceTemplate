@@ -18,29 +18,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{74
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebGateway", "WebGateway", "{A9D242E3-4F2E-456A-BAEC-9C26A48410D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.ApiGateway", "src\ApiGateways\WebApiGateway\Web.ApiGateway\Web.ApiGateway.csproj", "{E972EFEE-8597-4B53-91C8-9590B5CF4E25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.ApiGateway", "src\ApiGateways\WebApiGateway\Web.ApiGateway\Web.ApiGateway.csproj", "{E972EFEE-8597-4B53-91C8-9590B5CF4E25}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventBus", "EventBus", "{37186281-81FC-47C1-9CB7-F3F78427AEFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Base", "src\BuildingBlocks\EventBus\EventBus.Base\EventBus.Base.csproj", "{5DA29D04-C399-4982-BE42-76299D62732C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Base", "src\BuildingBlocks\EventBus\EventBus.Base\EventBus.Base.csproj", "{5DA29D04-C399-4982-BE42-76299D62732C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Factory", "src\BuildingBlocks\EventBus\EventBus.Factory\EventBus.Factory.csproj", "{8B1513C5-737E-45E8-B0C8-0197D5F3405B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Factory", "src\BuildingBlocks\EventBus\EventBus.Factory\EventBus.Factory.csproj", "{8B1513C5-737E-45E8-B0C8-0197D5F3405B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.AzureServiceBus", "src\BuildingBlocks\EventBus\EventBus.AzureServiceBus\EventBus.AzureServiceBus.csproj", "{0B2316FE-D666-4B32-B544-0DBFC919E8D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.AzureServiceBus", "src\BuildingBlocks\EventBus\EventBus.AzureServiceBus\EventBus.AzureServiceBus.csproj", "{0B2316FE-D666-4B32-B544-0DBFC919E8D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.RabbitMQ", "src\BuildingBlocks\EventBus\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{D97C9F31-E279-4BD3-B894-C323CE4AFDC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.RabbitMQ", "src\BuildingBlocks\EventBus\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{D97C9F31-E279-4BD3-B894-C323CE4AFDC3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhoneBookService", "PhoneBookService", "{D6B4659C-D191-4433-85EB-2AF69E03BBD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBookService.Domain", "src\Services\PhoneBookService\PhoneBookService.Domain\PhoneBookService.Domain.csproj", "{2CC8049F-3DAF-4F97-9B22-F8D98BC26FF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBookService.Domain", "src\Services\PhoneBookService\PhoneBookService.Domain\PhoneBookService.Domain.csproj", "{2CC8049F-3DAF-4F97-9B22-F8D98BC26FF9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReportService", "ReportService", "{B8723DBC-3FD8-48C5-8075-7E8230DD09CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBookService.Application", "src\Services\PhoneBookService\PhoneBookService.Application\PhoneBookService.Application.csproj", "{4195FFB2-EABC-4A82-A655-BB8FE768E089}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBookService.Application", "src\Services\PhoneBookService\PhoneBookService.Application\PhoneBookService.Application.csproj", "{4195FFB2-EABC-4A82-A655-BB8FE768E089}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBookService.Infrastructure", "src\Services\PhoneBookService\PhoneBookService.Infrastructure\PhoneBookService.Infrastructure.csproj", "{190CF4FA-0EDC-4CC1-ACDE-2381DD018F0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBookService.Infrastructure", "src\Services\PhoneBookService\PhoneBookService.Infrastructure\PhoneBookService.Infrastructure.csproj", "{190CF4FA-0EDC-4CC1-ACDE-2381DD018F0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBookService.Api", "src\Services\PhoneBookService\PhoneBookService.Api\PhoneBookService.Api.csproj", "{5C96C441-3D06-4A45-B2B8-1221C7C27E7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBookService.Api", "src\Services\PhoneBookService\PhoneBookService.Api\PhoneBookService.Api.csproj", "{5C96C441-3D06-4A45-B2B8-1221C7C27E7F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0AAFF954-5EA1-48E1-B52F-CBB8070A2551}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{20D5A570-C021-43EA-8267-C0B3246238B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.UnitTest", "src\Tests\BuildingBlocks\EventBus.UnitTest\EventBus.UnitTest.csproj", "{AB2B2F0C-2C9B-44B3-8539-45BCEAB84597}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,6 +90,10 @@ Global
 		{5C96C441-3D06-4A45-B2B8-1221C7C27E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C96C441-3D06-4A45-B2B8-1221C7C27E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C96C441-3D06-4A45-B2B8-1221C7C27E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB2B2F0C-2C9B-44B3-8539-45BCEAB84597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB2B2F0C-2C9B-44B3-8539-45BCEAB84597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB2B2F0C-2C9B-44B3-8539-45BCEAB84597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB2B2F0C-2C9B-44B3-8539-45BCEAB84597}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +115,9 @@ Global
 		{4195FFB2-EABC-4A82-A655-BB8FE768E089} = {D6B4659C-D191-4433-85EB-2AF69E03BBD6}
 		{190CF4FA-0EDC-4CC1-ACDE-2381DD018F0A} = {D6B4659C-D191-4433-85EB-2AF69E03BBD6}
 		{5C96C441-3D06-4A45-B2B8-1221C7C27E7F} = {D6B4659C-D191-4433-85EB-2AF69E03BBD6}
+		{0AAFF954-5EA1-48E1-B52F-CBB8070A2551} = {F9608617-044F-4CA9-9631-1B74DAC08632}
+		{20D5A570-C021-43EA-8267-C0B3246238B3} = {0AAFF954-5EA1-48E1-B52F-CBB8070A2551}
+		{AB2B2F0C-2C9B-44B3-8539-45BCEAB84597} = {20D5A570-C021-43EA-8267-C0B3246238B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F10EBB64-25EE-4725-B015-82C56FA4E61F}

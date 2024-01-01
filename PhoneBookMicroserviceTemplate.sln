@@ -46,7 +46,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0AAFF954
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{20D5A570-C021-43EA-8267-C0B3246238B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.UnitTest", "src\Tests\BuildingBlocks\EventBus.UnitTest\EventBus.UnitTest.csproj", "{AB2B2F0C-2C9B-44B3-8539-45BCEAB84597}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.UnitTest", "src\Tests\BuildingBlocks\EventBus.UnitTest\EventBus.UnitTest.csproj", "{AB2B2F0C-2C9B-44B3-8539-45BCEAB84597}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

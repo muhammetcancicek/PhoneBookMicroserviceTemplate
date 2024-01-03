@@ -27,7 +27,7 @@ namespace PhoneBookService.Application.Services
 
             foreach (var contactInfo in createPersonDto.ContactInfos)
             {
-                person.AddContactInfo(new ContactInfo(Guid.NewGuid(), contactInfo.Type, contactInfo.Content));
+                _contactInfoRepository.AddAsync(new ContactInfo(Guid.NewGuid(), person.Id, contactInfo.Type, contactInfo.Content));
             }
 
             await _personRepository.AddAsync(person);
@@ -42,20 +42,20 @@ namespace PhoneBookService.Application.Services
             };
         }
 
-        public async Task<PersonDTO> UpdateAsync(Guid id, UpdatePersonDTO updatePersonDto)
+        public async Task<PersonDTO> UpdateAsync(Guid personId, UpdatePersonDTO updatePersonDto)
         {
-            var person = await _personRepository.GetByIdAsync(id);
+            var person = await _personRepository.GetByIdWithContactInfosAsync(personId);
             if (person == null) throw new KeyNotFoundException("Person not found");
 
             person.UpdateDetails(updatePersonDto.FirstName, updatePersonDto.LastName, updatePersonDto.Company);
 
             foreach (var contactInfo in updatePersonDto.AddedContactInfos)
             {
-                person.AddContactInfo(new ContactInfo(Guid.NewGuid(),contactInfo.Type, contactInfo.Content));
+                _contactInfoRepository.AddAsync(new ContactInfo(Guid.NewGuid(), personId, contactInfo.Type, contactInfo.Content));
             }
             foreach (var contactInfo in updatePersonDto.UpdatedContactInfos)
             {
-                await _contactInfoRepository.UpdateAsync(new ContactInfo(contactInfo.Id, contactInfo.Type, contactInfo.Content));
+                await _contactInfoRepository.UpdateAsync(new ContactInfo(contactInfo.Id, personId, contactInfo.Type, contactInfo.Content));
             }
 
             await _personRepository.UpdateAsync(person);

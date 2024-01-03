@@ -14,10 +14,11 @@ namespace PhoneBookService.Domain.Entities
         public ContactType Type { get; set; }
         public string Content { get; set; }
 
-        public ContactInfo(Guid id, ContactType type, string content)
+        public ContactInfo(Guid id, Guid personId, ContactType type, string content)
         {
             Id = id;
             Type = type;
+            PersonId = personId;
             Content = content;
         }
         public ContactInfo()

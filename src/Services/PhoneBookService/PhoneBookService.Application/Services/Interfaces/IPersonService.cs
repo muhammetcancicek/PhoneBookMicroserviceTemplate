@@ -19,5 +19,6 @@ namespace PhoneBookService.Application.Services
         Task<IEnumerable<PersonDTO>> GetAllsAsync();
         Task<PersonDTO> GetByIdAsync(Guid id);
         Task<IEnumerable<PersonDTO>> GetAllWithContactInfosAsync();
+        Task<PersonDTO> GetByIdWithContactInfosAsync(Guid id);
     }
 }

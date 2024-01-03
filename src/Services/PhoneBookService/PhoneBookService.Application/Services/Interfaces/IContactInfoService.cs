@@ -16,6 +16,7 @@ namespace PhoneBookService.Application.Services
         Task<Guid> CreateAsync(Guid personId, CreateContactInfoDTO createContactInfoDto);
         Task<ContactInfoDTO> GetByIdAsync(Guid id);
         Task DeleteAsync(Guid personId, Guid contactInfoId);
+        Task DeleteAsync(Guid id);
 
     }
 }

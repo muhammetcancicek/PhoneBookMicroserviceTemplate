@@ -54,10 +54,18 @@ namespace PhoneBookService.Application.Services
 
             await _contactInfoRepository.DeleteAsync(contactInfoId);
         }
+        public async Task DeleteAsync(Guid id)
+        {
+            await _contactInfoRepository.DeleteAsync(id);
+        }
+
+
+
         public async Task<ContactInfoDTO> GetByIdAsync(Guid id)
         {
             var contactInfo = await _contactInfoRepository.GetByIdAsync(id);
-            if (contactInfo == null) throw new KeyNotFoundException("Contact Info not found");
+            if (contactInfo == null) 
+                throw new KeyNotFoundException("Contact Info not found");
 
             return new ContactInfoDTO
             {

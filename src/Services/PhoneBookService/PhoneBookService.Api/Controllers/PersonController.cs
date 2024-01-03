@@ -8,11 +8,13 @@ namespace PhoneBookService.Api.Controllers
     [Route("[controller]")]
     public class PersonController : ControllerBase
     {
-        private readonly PersonService _personService;
+        private readonly IPersonService _personService;
+        private readonly IContactInfoService _contactInfoService;
 
-        public PersonController(PersonService personService)
+        public PersonController(IPersonService personService, IContactInfoService contactInfoService)
         {
             _personService = personService;
+            _contactInfoService = contactInfoService;
         }
 
         [HttpGet]
@@ -47,7 +49,13 @@ namespace PhoneBookService.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
+            var personContactList = await _contactInfoService.GetAllForPersonAsync(id);
+            foreach (var personContact in personContactList)
+            {
+                await _contactInfoService.DeleteAsync(personContact.Id);
+            }
             await _personService.DeleteAsync(id);
+
             return NoContent();
         }
     }

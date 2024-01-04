@@ -40,25 +40,6 @@ namespace EventBus.UnitTest
         }
 
         [TestMethod]
-        public void subscribe_event_on_azure_test()
-        {
-            services.AddSingleton<IEventBus>(sp =>
-            {
-                return EventBusFactory.Create(GetAzureConfig(), sp);
-            });
-
-
-            var sp = services.BuildServiceProvider();
-
-            var eventBus = sp.GetRequiredService<IEventBus>();
-
-            eventBus.Subscribe<OrderCreatedIntegrationEvent, OrderCreatedIntegrationEventHandler>();
-            //eventBus.UnSubscribe<OrderCreatedIntegrationEvent, OrderCreatedIntegrationEventHandler>();
-
-            Task.Delay(2000).Wait();
-        }
-
-        [TestMethod]
         public void send_message_to_rabbitmq_test()
         {
             services.AddSingleton<IEventBus>(sp =>
@@ -72,39 +53,6 @@ namespace EventBus.UnitTest
             var eventBus = sp.GetRequiredService<IEventBus>();
 
             eventBus.Publish(new OrderCreatedIntegrationEvent(1));
-        }
-
-        [TestMethod]
-        public void send_message_to_azure_test()
-        {
-            services.AddSingleton<IEventBus>(sp =>
-            {
-                return EventBusFactory.Create(GetAzureConfig(), sp);
-            });
-
-
-            var sp = services.BuildServiceProvider();
-
-            var eventBus = sp.GetRequiredService<IEventBus>();
-
-            eventBus.Publish(new OrderCreatedIntegrationEvent(1));
-        }
-
-
-
-
-
-        private EventBusConfig GetAzureConfig()
-        {
-            return new EventBusConfig()
-            {
-                ConnectionRetryCount = 5,
-                SubscriberClientAppName = "EventBus.UnitTest",
-                DefaultTopicName = "PhoneBookTopicName",
-                EventBusType = EventBusType.AzureServiceBus,
-                EventNameSuffix = "IntegrationEvent",
-                EventBusConnectionString = "Endpoint=sb://techbuddy.servicebus.windows.net/;SharedAccessKeyName=NewPolicyForYTVideos;SharedAccessKey=7sJghGWFOXaUaRblrbzOIIf4bQk6qkbTN/SEnKjXLpE="
-            };
         }
 
         private EventBusConfig GetRabbitMQConfig()

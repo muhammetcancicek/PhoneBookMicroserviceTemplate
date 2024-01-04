@@ -5,7 +5,7 @@ using PhoneBookService.Application.Services;
 namespace PhoneBookService.Api.Controllers
 {
     [ApiController]
-    [Route("persons/{personId}/[controller]")]
+    [Route("[controller]")]
     public class ContactInfoController : ControllerBase
     {
         private readonly IContactInfoService _contactInfoService;
@@ -39,9 +39,9 @@ namespace PhoneBookService.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid personId, Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            await _contactInfoService.DeleteAsync(personId, id);
+            await _contactInfoService.DeleteAsync(id);
             return Ok();
         }
     }

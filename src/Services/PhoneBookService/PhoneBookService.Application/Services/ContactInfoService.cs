@@ -49,8 +49,8 @@ namespace PhoneBookService.Application.Services
         public async Task DeleteAsync(Guid personId, Guid contactInfoId)
         {
             var contactInfo = await _contactInfoRepository.GetByIdAsync(contactInfoId);
-            if (contactInfo == null || contactInfo.PersonId != personId)
-                throw new KeyNotFoundException("ContactInfo not found or does not belong to the specified person");
+            if (contactInfo == null)
+                throw new KeyNotFoundException("ContactInfo not found");
 
             await _contactInfoRepository.DeleteAsync(contactInfoId);
         }

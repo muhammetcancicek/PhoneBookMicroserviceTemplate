@@ -13,6 +13,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
+    <PackageReference Include="Moq" Version="4.20.70" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
     <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
     <PackageReference Include="xunit" Version="2.4.2" />
@@ -29,6 +30,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\BuildingBlocks\EventBus\EventBus.Base\EventBus.Base.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\EventBus\EventBus.Factory\EventBus.Factory.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhoneBookService\PhoneBookService.Api\PhoneBookService.Api.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhoneBookService\PhoneBookService.Application\PhoneBookService.Application.csproj" />
+    <ProjectReference Include="..\..\..\Services\PhoneBookService\PhoneBookService.Domain\PhoneBookService.Domain.csproj" />
   </ItemGroup>
 
 </Project>

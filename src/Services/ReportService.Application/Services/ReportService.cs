@@ -15,7 +15,9 @@ namespace ReportService.Application.Services
         private readonly IReportRepository _reportRepository;
         private readonly IRabbitMqService _rabbitMqService;
         private readonly IContactInfoRepository _contactInfoRepository;
-        private const string ReportQueueName = "report_requests";
+        private const string ReportRequestQueueName = "report_requests";
+        private const string ReportResponseQueueName = "report_responses";
+
 
         public ReportService(IReportRepository reportRepository, IRabbitMqService rabbitMqService, IContactInfoRepository contactInfoRepository)
         {
@@ -61,7 +63,10 @@ namespace ReportService.Application.Services
             };
             await _reportRepository.AddAsync(report);
 
-            _rabbitMqService.PublishMessage(ReportQueueName, report.Id);
+            var correlationId = Guid.NewGuid().ToString();
+            _rabbitMqService.SendRequest(ReportRequestQueueName, report.Id, ReportResponseQueueName, correlationId);
+
+            //_rabbitMqService.PublishMessage(ReportQueueName, report.Id);
             return report.Id;
         }
 

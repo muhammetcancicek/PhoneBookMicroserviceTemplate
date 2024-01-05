@@ -33,15 +33,12 @@ namespace EventBus.UnitTest
         [Fact]
         public async Task GetById_ContactInfoExists_ShouldReturnContactInfo()
         {
-            // Arrange
             var contactInfoId = Guid.NewGuid();
             var contactInfoDto = new ContactInfoDTO { Id = contactInfoId, Type = ContactType.EmailAddress, Content = "kullanici@gmail.com" };
             _mockContactInfoService.Setup(service => service.GetByIdAsync(contactInfoId)).ReturnsAsync(contactInfoDto);
 
-            // Act
             var result = await _controller.GetById(contactInfoId);
 
-            // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
             Assert.Equal(contactInfoDto, okResult.Value);
         }
@@ -53,7 +50,7 @@ namespace EventBus.UnitTest
             _mockContactInfoService.Setup(service => service.GetByIdAsync(contactInfoId)).ReturnsAsync((ContactInfoDTO)null);
 
             var result = await _controller.GetById(contactInfoId);
-            
+
             Assert.IsType<NotFoundResult>(result);
         }
 

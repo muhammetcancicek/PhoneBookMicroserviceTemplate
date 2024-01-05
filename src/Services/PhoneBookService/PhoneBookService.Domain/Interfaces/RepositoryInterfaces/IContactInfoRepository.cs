@@ -10,5 +10,6 @@ namespace PhoneBookService.Domain.Interfaces.RepositoryInterfaces
     public interface IContactInfoRepository : IBaseRepository<ContactInfo>
     {
         Task<IEnumerable<ContactInfo>> GetAllByPersonIdAsync(Guid personId);
+        Task<List<ContactInfo>> GetLocationContactInfosAsync();
     }
 }

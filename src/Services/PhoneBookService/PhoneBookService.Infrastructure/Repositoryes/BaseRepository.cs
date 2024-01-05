@@ -13,6 +13,11 @@ namespace PhoneBookService.Infrastructure.Repositoryes
             _collection = database.GetCollection<T>(collectionName);
         }
 
+        public async Task<IQueryable<T>> AsQueryable()
+        {
+            return _collection.AsQueryable();
+        }
+
         public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _collection.Find(_ => true).ToListAsync();

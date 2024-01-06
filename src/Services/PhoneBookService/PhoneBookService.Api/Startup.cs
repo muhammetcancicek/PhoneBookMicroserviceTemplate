@@ -40,7 +40,6 @@ namespace PhoneBookService.Api
             services.AddScoped<IPersonService, PersonService>();
 
             services.AddAutoMapper(typeof(MappingProfile));
-            // CORS policy configuration
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(builder =>

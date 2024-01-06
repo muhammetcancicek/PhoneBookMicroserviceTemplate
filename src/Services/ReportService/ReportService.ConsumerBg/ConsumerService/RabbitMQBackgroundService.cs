@@ -24,7 +24,6 @@ namespace ReportService.ConsumerBg.ConsumerService
             });
             Console.WriteLine("Consumer başlatıldı. Mesajları dinliyor...");
 
-            // Arka plan servisini sonsuz bir döngüde tutun
             while (!stoppingToken.IsCancellationRequested)
             {
                 await Task.Delay(Timeout.Infinite, stoppingToken);
@@ -38,7 +37,6 @@ namespace ReportService.ConsumerBg.ConsumerService
             {
                 await reportService.CreateReport(reportId);
 
-                // Rapor güncellendikten sonra RabbitMQ'ya bir cevap mesajı gönder
                 var responseMessage = $"İşlem başarılı. Rapor ID = {reportId}";
                 var responseBytes = Encoding.UTF8.GetBytes(responseMessage);
                 rabbitMqService.SendResponse(ea.BasicProperties.ReplyTo, responseBytes, ea.BasicProperties.CorrelationId);

@@ -21,15 +21,12 @@ namespace EventBus.UnitTest
         [Fact]
         public async Task GetAllReports_ShouldReturnReports()
         {
-            // Arrange
-            var mockReports = new List<Report> { /* Örnek Report nesneleri */ };
+            var mockReports = new List<Report> {  };
             _fixture.MockReportRepository.Setup(repo => repo.GetAllAsync())
                 .ReturnsAsync(mockReports);
 
-            // Act
             var result = await _fixture.ReportService.GetAllReports();
 
-            // Assert
             Assert.NotNull(result);
             Assert.Equal(mockReports.Count, result.Count());
         }
@@ -37,16 +34,13 @@ namespace EventBus.UnitTest
         [Fact]
         public async Task GetReportById_ShouldReturnReport_WhenReportExists()
         {
-            // Arrange
             var reportId = Guid.NewGuid();
-            var mockReport = new Report { Id = reportId, /* Diğer özellikler */ };
+            var mockReport = new Report { Id = reportId, };
             _fixture.MockReportRepository.Setup(repo => repo.GetByIdAsync(reportId))
                 .ReturnsAsync(mockReport);
 
-            // Act
             var result = await _fixture.ReportService.GetReportById(reportId);
 
-            // Assert
             Assert.NotNull(result);
             Assert.Equal(reportId, result.Id);
         }

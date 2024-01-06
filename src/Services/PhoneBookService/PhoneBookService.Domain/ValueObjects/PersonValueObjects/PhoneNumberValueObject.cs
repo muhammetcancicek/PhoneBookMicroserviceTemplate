@@ -19,7 +19,6 @@ namespace PhoneBookService.Domain.ValueObjects.PersonValueObjects
 
         private bool IsValid(string number)
         {
-            // Phone Number Check
             return true; 
         }
 

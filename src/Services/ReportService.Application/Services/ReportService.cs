@@ -65,7 +65,6 @@ namespace ReportService.Application.Services
             var correlationId = Guid.NewGuid().ToString();
             rabbitMqService.SendRequest(ReportRequestQueueName, report.Id, ReportResponseQueueName, correlationId);
 
-            //_rabbitMqService.PublishMessage(ReportQueueName, report.Id);
             return report.Id;
         }
 

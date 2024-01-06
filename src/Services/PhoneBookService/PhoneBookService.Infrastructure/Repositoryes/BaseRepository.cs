@@ -36,7 +36,6 @@ namespace PhoneBookService.Infrastructure.Repositoryes
         public async Task UpdateAsync(T entity)
         {
             await _collection.ReplaceOneAsync(Builders<T>.Filter.Eq("_id",entity.Id), entity);
-            // await _collection.ReplaceOneAsync(Builders<T>.Filter.Eq("_id", entity), entity);
         }
 
         public async Task DeleteAsync(Guid id)

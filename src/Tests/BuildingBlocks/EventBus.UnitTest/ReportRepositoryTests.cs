@@ -22,7 +22,7 @@ namespace EventBus.UnitTest
 
         public async Task GetAllAsync_ReturnsAllReports()
         {
-            // Arrange
+
             var mockReports = new List<Report> { new Report(), new Report() };
             var mockCursor = new Mock<IAsyncCursor<Report>>();
             mockCursor.SetupSequence(_ => _.MoveNext(It.IsAny<CancellationToken>()))
@@ -35,10 +35,10 @@ namespace EventBus.UnitTest
                                                            It.IsAny<CancellationToken>()))
                                    .ReturnsAsync(mockCursor.Object);
 
-            // Act
+
             var result = await _fixture.ReportRepository.GetAllAsync();
 
-            // Assert
+
             Assert.Equal(mockReports.Count, result.Count());
         }
 

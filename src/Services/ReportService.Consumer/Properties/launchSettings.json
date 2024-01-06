@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ReportService.Consumer": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

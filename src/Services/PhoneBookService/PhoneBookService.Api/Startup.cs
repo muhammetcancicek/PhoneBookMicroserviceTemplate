@@ -40,6 +40,19 @@ namespace PhoneBookService.Api
             services.AddScoped<IPersonService, PersonService>();
 
             services.AddAutoMapper(typeof(MappingProfile));
+            // CORS policy configuration
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
+
+
+
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment env)
@@ -51,6 +64,9 @@ namespace PhoneBookService.Api
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors();
+
             app.UseAuthorization();
             app.MapControllers();
         }

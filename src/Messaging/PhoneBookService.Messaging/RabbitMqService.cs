@@ -23,9 +23,9 @@ namespace PhoneBookService.Messaging
         private readonly ConnectionFactory _connectionFactory;
         private IModel _channel;
 
-        public RabbitMqService(string connectionString)
+        public RabbitMqService(string connectionString = "amqp://guest:guest@s_rabbitmq:5672/")
         {
-            _connectionFactory = new ConnectionFactory() { Uri = new Uri(connectionString) };
+            _connectionFactory = new ConnectionFactory() { Uri = new Uri("amqp://guest:guest@s_rabbitmq:5672/") };
             InitializeRabbitMq();
         }
 

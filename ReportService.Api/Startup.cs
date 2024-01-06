@@ -40,7 +40,15 @@ namespace ReportService.Api
             services.AddScoped<IReportRepository, ReportRepository>();
             services.AddScoped<IContactInfoRepository, ContactInfoRepository>();
             services.AddScoped<IReportService, ReportService.Application.Services.ReportService>();
-
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment env)
@@ -50,6 +58,8 @@ namespace ReportService.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors();
 
             app.UseHttpsRedirection();
             app.UseAuthorization();

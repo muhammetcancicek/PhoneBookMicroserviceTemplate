@@ -11,6 +11,7 @@ using ReportService.Domain.Interfaces;
 using ReportService.Infrastructure.Repositories;
 using System;
 using System.Text;
+using System.Text.Json;
 
 class Program
 {
@@ -29,8 +30,12 @@ class Program
 
     private static void ConfigureServices(IServiceCollection services)
     {
-        var connectionString = "amqp://guest:guest@localhost:5672/";
-        services.AddSingleton<IRabbitMqService, RabbitMqService>(_ => new RabbitMqService(connectionString));
+        var connectionString = "amqp://guest:guest@s_rabbitmq:5672/";
+        services.AddSingleton<IRabbitMqService, RabbitMqService>(sp =>
+        {
+            return new RabbitMqService(connectionString);
+        });
+
         services.AddSingleton<IReportService, ReportService.Application.Services.ReportService>();
         services.AddSingleton<IReportRepository, ReportRepository>();
 
@@ -52,13 +57,13 @@ new MongoClient("mongodb+srv://devDbUser:Mcan1973!?@devdatabase.trskelc.mongodb.
             ProcessMessage1(reportId, rabbitMqService, reportService);
         });
         Console.WriteLine("Consumer başlatıldı. Mesajları dinliyor...");
-        Console.ReadLine(); 
+        Console.ReadLine();
     }
 
     private async static void ProcessMessage1(Guid reportId, IRabbitMqService rabbitMqService, IReportService reportService)
     {
         try
-        { 
+        {
             await reportService.CreateReport(reportId);
 
             // Rapor güncellendikten sonra RabbitMQ'ya bir cevap mesajı gönder
@@ -105,7 +110,4 @@ new MongoClient("mongodb+srv://devDbUser:Mcan1973!?@devdatabase.trskelc.mongodb.
             Console.WriteLine($"Rapor oluşturulma işleminde hata: {ex.Message}");
         }
     }
-
-
-
 }

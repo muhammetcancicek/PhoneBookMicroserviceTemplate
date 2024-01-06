@@ -9,14 +9,7 @@ using System.Threading.Tasks;
 
 namespace PhoneBookService.Messaging
 {
-    //public interface IRabbitMqService
-    //{
-    //    void PublishMessage<T>(string queueName, T message);
-    //    void StartConsumer<T>(string queueName, Action<T> onMessageReceived);
-    //    void SendRequest<T>(string queueName, T message, string replyQueueName, string correlationId);
-    //    void StartReplyConsumer<T>(string queueName, Action<T, BasicDeliverEventArgs> onReplyReceived);
-    //    void SendResponse(string replyQueue, byte[] responseBytes, string correlationId);
-    //}
+
 
     public class RabbitMqService
     {
@@ -25,7 +18,8 @@ namespace PhoneBookService.Messaging
 
         public RabbitMqService(string connectionString = "amqp://guest:guest@s_rabbitmq:5672/")
         {
-            _connectionFactory = new ConnectionFactory() { Uri = new Uri("amqp://guest:guest@s_rabbitmq:5672/") };
+            var connectionStr = "amqp://guest:guest@s_rabbitmq:5672/";
+            _connectionFactory = new ConnectionFactory() { Uri = new Uri(connectionStr) };
             InitializeRabbitMq();
         }
 

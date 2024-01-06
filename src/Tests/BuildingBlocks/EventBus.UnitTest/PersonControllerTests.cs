@@ -30,7 +30,6 @@ namespace EventBus.UnitTest
         [Fact]
         public async Task GetAll_ShouldReturnAllPersons()
         {
-            // Arrange
             var persons = new List<PersonDTO>
         {
             new PersonDTO { Id = Guid.NewGuid(), FirstName = "Ayşe", LastName = "Yılmaz", Company = "ABC Ltd." },
@@ -38,10 +37,8 @@ namespace EventBus.UnitTest
         };
             _mockPersonService.Setup(service => service.GetAllWithContactInfosAsync()).ReturnsAsync(persons);
 
-            // Act
             var result = await _controller.GetAll();
 
-            // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
             var returnedPersons = Assert.IsType<List<PersonDTO>>(okResult.Value);
             Assert.Equal(persons.Count, returnedPersons.Count);
@@ -50,16 +47,13 @@ namespace EventBus.UnitTest
         [Fact]
         public async Task Create_ShouldReturnCreatedAtActionResult()
         {
-            // Arrange
             var createPersonDto = new CreatePersonDTO { FirstName = "Mehmet", LastName = "Kaya", Company = "DEF Şirketi" };
             var personDto = new PersonDTO { Id = Guid.NewGuid(), FirstName = "Mehmet", LastName = "Kaya", Company = "DEF Şirketi" };
             var personId = Guid.NewGuid();
             _mockPersonService.Setup(service => service.CreateAsync(createPersonDto)).ReturnsAsync(personDto);
-
-            // Act
+             
             var result = await _controller.Create(createPersonDto);
 
-            // Assert
             var createdAtActionResult = Assert.IsType<CreatedAtActionResult>(result);
             Assert.Equal(nameof(_controller.GetById), createdAtActionResult.ActionName);
             Assert.Equal(createPersonDto, createdAtActionResult.Value);
@@ -68,15 +62,12 @@ namespace EventBus.UnitTest
         [Fact]
         public async Task GetById_PersonExists_ShouldReturnPerson()
         {
-            // Arrange
             var personId = Guid.NewGuid();
             var personDto = new PersonDTO { Id = personId, FirstName = "Elif", LastName = "Çelik", Company = "GHI Kurumu" };
             _mockPersonService.Setup(service => service.GetByIdWithContactInfosAsync(personId)).ReturnsAsync(personDto);
 
-            // Act
             var result = await _controller.GetById(personId);
 
-            // Assert
             var okResult = Assert.IsType<OkObjectResult>(result);
             Assert.Equal(personDto, okResult.Value);
         }
@@ -84,30 +75,24 @@ namespace EventBus.UnitTest
         [Fact]
         public async Task GetById_PersonNotExists_ShouldReturnNotFound()
         {
-            // Arrange
             var personId = Guid.NewGuid();
             _mockPersonService.Setup(service => service.GetByIdWithContactInfosAsync(personId)).ReturnsAsync((PersonDTO)null);
 
-            // Act
             var result = await _controller.GetById(personId);
 
-            // Assert
             Assert.IsType<NotFoundResult>(result);
         }
 
         [Fact]
         public async Task Update_ShouldReturnNoContentResult()
         {
-            // Arrange
             var personId = Guid.NewGuid();
             var updatePersonDto = new UpdatePersonDTO { FirstName = "Can", LastName = "Özdemir", Company = "JKL Şirketi" };
             var personDto = new PersonDTO { Id = Guid.NewGuid(), FirstName = "Can", LastName = "Özdemir", Company = "JKL Şirketi" };
             _mockPersonService.Setup(service => service.UpdateAsync(personId, updatePersonDto)).ReturnsAsync(personDto);
 
-            // Act
             var result = await _controller.Update(personId, updatePersonDto);
 
-            // Assert
             Assert.IsType<NoContentResult>(result);
         }
 

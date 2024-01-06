@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace PhoneBookService.Messaging
 {
-    public interface IRabbitMqService
-    {
-        void PublishMessage<T>(string queueName, T message);
-        void StartConsumer<T>(string queueName, Action<T> onMessageReceived);
-        void SendRequest<T>(string queueName, T message, string replyQueueName, string correlationId);
-        void StartReplyConsumer<T>(string queueName, Action<T, BasicDeliverEventArgs> onReplyReceived);
-        void SendResponse(string replyQueue, byte[] responseBytes, string correlationId);
-    }
+    //public interface IRabbitMqService
+    //{
+    //    void PublishMessage<T>(string queueName, T message);
+    //    void StartConsumer<T>(string queueName, Action<T> onMessageReceived);
+    //    void SendRequest<T>(string queueName, T message, string replyQueueName, string correlationId);
+    //    void StartReplyConsumer<T>(string queueName, Action<T, BasicDeliverEventArgs> onReplyReceived);
+    //    void SendResponse(string replyQueue, byte[] responseBytes, string correlationId);
+    //}
 
-    public class RabbitMqService : IRabbitMqService
+    public class RabbitMqService
     {
         private readonly ConnectionFactory _connectionFactory;
         private IModel _channel;

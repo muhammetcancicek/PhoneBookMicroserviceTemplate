@@ -1,17 +1,11 @@
 version: '3.4'
 
 services:
-  # reportservice.api:
-  #   image: ${DOCKER_REGISTRY-}reportserviceapi
-  #   build:
-  #     context: .
-  #     dockerfile: ReportService.Api/Dockerfile
-
-  reportservice.consumer:
-    image: ${DOCKER_REGISTRY-}reportserviceconsumer
+  reportservice.api:
+    image: ${DOCKER_REGISTRY-}reportserviceapi
     build:
       context: .
-      dockerfile: src/Services/ReportService.Consumer/Dockerfile
+      dockerfile: ReportService.Api/Dockerfile
 
 
   phonebookservice.api:
@@ -29,6 +23,13 @@ services:
     volumes:
       - rabbitmq:/var/lib/rabbitmq
 
+  reportservice.consumerbg:
+    image: ${DOCKER_REGISTRY-}reportserviceconsumerbg
+    build:
+      context: .
+      dockerfile: src/Services/ReportService/ReportService.ConsumerBg/Dockerfile
+
 volumes:
   rabbitmq:
+
 

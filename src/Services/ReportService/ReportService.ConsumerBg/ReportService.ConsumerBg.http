@@ -1,0 +1,6 @@
+@ReportService.ConsumerBg_HostAddress = http://localhost:5169
+
+GET {{ReportService.ConsumerBg_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

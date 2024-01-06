@@ -1,17 +1,17 @@
 version: '3.4'
 
 services:
-  # reportservice.api:
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Development
-  #     - ASPNETCORE_HTTP_PORTS=5050
-  #     - ASPNETCORE_HTTPS_PORTS=5051
-  #   ports:
-  #     - "5050:5050"
-  #     - "5051:5051"
-  #   volumes:
-  #     - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-  #     - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+  reportservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5050
+      - ASPNETCORE_HTTPS_PORTS=5051
+    ports:
+      - "5050:5050"
+      - "5051:5051"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
   phonebookservice.api:
       environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -21,5 +21,17 @@ services:
       - "5000:5000"
       - "5001:5001"
       volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  reportservice.consumerbg:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=5100
+      - ASPNETCORE_HTTPS_PORTS=5101
+    ports:
+      - "5100"
+      - "5101"
+    volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro

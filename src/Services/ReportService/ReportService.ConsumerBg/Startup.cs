@@ -7,8 +7,9 @@ using ReportService.Infrastructure.Repositories;
 using PhoneBookService.Infrastructure.Repositoryes;
 using PhoneBookService.Domain.Interfaces.RepositoryInterfaces;
 using PhoneBookService.Messaging;
+using ReportService.ConsumerBg.ConsumerService;
 
-namespace ReportService.Api
+namespace ReportService.ConsumerBg
 {
     public class Startup
     {
@@ -21,19 +22,20 @@ namespace ReportService.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-
-
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+
             services.AddSingleton<IMongoClient>(provider =>
-            new MongoClient(Configuration.GetConnectionString("MongoDb")));
+new MongoClient("mongodb+srv://devDbUser:Mcan1973!?@devdatabase.trskelc.mongodb.net/?retryWrites=true&w=majority"));
 
             services.AddSingleton<IMongoDatabase>(provider =>
                 provider.GetRequiredService<IMongoClient>().GetDatabase("PhoneBookDb"));
-            services.AddScoped<IReportRepository, ReportRepository>();
-            services.AddScoped<IContactInfoRepository, ContactInfoRepository>();
-            services.AddScoped<IReportService, ReportService.Application.Services.ReportService>();
+
+            services.AddSingleton<IReportRepository, ReportRepository>();
+            services.AddSingleton<IContactInfoRepository, ContactInfoRepository>();
+            services.AddSingleton<IReportService, ReportService.Application.Services.ReportService>();
+            services.AddHostedService<RabbitMQBackgroundService>();
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(builder =>
@@ -45,19 +47,24 @@ namespace ReportService.Api
             });
         }
 
-        public void Configure(WebApplication app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
+                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
 
+            app.UseRouting();
             app.UseCors();
-
             app.UseHttpsRedirection();
             app.UseAuthorization();
-            app.MapControllers();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

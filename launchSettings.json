@@ -6,7 +6,8 @@
       "serviceActions": {
         "reportservice.api": "StartDebugging",
         "reportservice.consumer": "StartDebugging",
-        "phonebookservice.api": "StartDebugging"
+        "phonebookservice.api": "StartDebugging",
+        "reportservice.consumerbg": "StartDebugging"
       }
     }
   }

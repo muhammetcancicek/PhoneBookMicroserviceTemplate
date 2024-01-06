@@ -28,12 +28,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\BuildingBlocks\EventBus\EventBus.Base\EventBus.Base.csproj" />
-    <ProjectReference Include="..\..\..\BuildingBlocks\EventBus\EventBus.Factory\EventBus.Factory.csproj" />
+    <ProjectReference Include="..\..\..\..\ReportService.Api\ReportService.Api.csproj" />
     <ProjectReference Include="..\..\..\Messaging\PhoneBookService.Messaging\PhoneBookService.Messaging.csproj" />
     <ProjectReference Include="..\..\..\Services\PhoneBookService\PhoneBookService.Api\PhoneBookService.Api.csproj" />
     <ProjectReference Include="..\..\..\Services\PhoneBookService\PhoneBookService.Application\PhoneBookService.Application.csproj" />
     <ProjectReference Include="..\..\..\Services\PhoneBookService\PhoneBookService.Domain\PhoneBookService.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Services\ReportService.Application\ReportService.Application.csproj" />
   </ItemGroup>
 
 </Project>

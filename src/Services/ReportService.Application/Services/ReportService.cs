@@ -13,16 +13,14 @@ namespace ReportService.Application.Services
     public class ReportService : IReportService
     {
         private readonly IReportRepository _reportRepository;
-        private readonly IRabbitMqService _rabbitMqService;
         private readonly IContactInfoRepository _contactInfoRepository;
         private const string ReportRequestQueueName = "report_requests";
         private const string ReportResponseQueueName = "report_responses";
 
 
-        public ReportService(IReportRepository reportRepository, IRabbitMqService rabbitMqService, IContactInfoRepository contactInfoRepository)
+        public ReportService(IReportRepository reportRepository,  IContactInfoRepository contactInfoRepository)
         {
             _reportRepository = reportRepository;
-            _rabbitMqService = rabbitMqService;
             _contactInfoRepository = contactInfoRepository;
         }
 
@@ -54,6 +52,7 @@ namespace ReportService.Application.Services
 
         public async Task<Guid> CreateReportRequest()
         {
+            var rabbitMqService = new RabbitMqService();
             var report = new Report
             {
                 Id = Guid.NewGuid(),
@@ -64,7 +63,7 @@ namespace ReportService.Application.Services
             await _reportRepository.AddAsync(report);
 
             var correlationId = Guid.NewGuid().ToString();
-            _rabbitMqService.SendRequest(ReportRequestQueueName, report.Id, ReportResponseQueueName, correlationId);
+            rabbitMqService.SendRequest(ReportRequestQueueName, report.Id, ReportResponseQueueName, correlationId);
 
             //_rabbitMqService.PublishMessage(ReportQueueName, report.Id);
             return report.Id;

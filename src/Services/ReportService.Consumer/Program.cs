@@ -22,19 +22,14 @@ class Program
 
         var serviceProvider = serviceCollection.BuildServiceProvider();
 
-        var rabbitMqService = serviceProvider.GetService<IRabbitMqService>();
         var reportService = serviceProvider.GetService<IReportService>();
 
-        StartConsumer(rabbitMqService, reportService);
+        StartConsumer(reportService);
     }
 
     private static void ConfigureServices(IServiceCollection services)
     {
         var connectionString = "amqp://guest:guest@s_rabbitmq:5672/";
-        services.AddSingleton<IRabbitMqService, RabbitMqService>(sp =>
-        {
-            return new RabbitMqService(connectionString);
-        });
 
         services.AddSingleton<IReportService, ReportService.Application.Services.ReportService>();
         services.AddSingleton<IReportRepository, ReportRepository>();
@@ -49,47 +44,21 @@ new MongoClient("mongodb+srv://devDbUser:Mcan1973!?@devdatabase.trskelc.mongodb.
         services.AddScoped<IReportService, ReportService.Application.Services.ReportService>();
     }
 
-    private static void StartConsumer1(IRabbitMqService rabbitMqService, IReportService reportService)
+    private static void StartConsumer(IReportService reportService)
     {
-        var queueName = "report_requests";
-        rabbitMqService.StartConsumer<Guid>(queueName, reportId =>
-        {
-            ProcessMessage1(reportId, rabbitMqService, reportService);
-        });
-        Console.WriteLine("Consumer başlatıldı. Mesajları dinliyor...");
-        Console.ReadLine();
-    }
-
-    private async static void ProcessMessage1(Guid reportId, IRabbitMqService rabbitMqService, IReportService reportService)
-    {
-        try
-        {
-            await reportService.CreateReport(reportId);
-
-            // Rapor güncellendikten sonra RabbitMQ'ya bir cevap mesajı gönder
-            rabbitMqService.PublishMessage("report_responses", $"İşlem başarılı. Rapor ID = {reportId}");
-
-            Console.WriteLine($"Rapor başarıyla oluşturuldu : {reportId}");
-        }
-        catch (Exception ex)
-        {
-            rabbitMqService.PublishMessage("report_responses", $"İşlem başarısız!");
-            Console.WriteLine($"Rapor oluşturulma işleminde hata: {ex.Message}");
-        }
-    }
-    private static void StartConsumer(IRabbitMqService rabbitMqService, IReportService reportService)
-    {
+        var rabbitMqService = new RabbitMqService();
         var queueName = "report_requests";
         rabbitMqService.StartReplyConsumer<Guid>(queueName, (reportId, ea) =>
         {
-            ProcessMessage(reportId, rabbitMqService, reportService, ea);
+            ProcessMessage(reportId, reportService, ea);
         });
         Console.WriteLine("Consumer başlatıldı. Mesajları dinliyor...");
         Console.ReadLine();
     }
 
-    private async static void ProcessMessage(Guid reportId, IRabbitMqService rabbitMqService, IReportService reportService, BasicDeliverEventArgs ea)
+    private async static void ProcessMessage(Guid reportId, IReportService reportService, BasicDeliverEventArgs ea)
     {
+            var rabbitMqService = new RabbitMqService();
         try
         {
             await reportService.CreateReport(reportId);

@@ -22,6 +22,7 @@ namespace PhoneBookService.Messaging
             _connectionFactory = new ConnectionFactory() { Uri = new Uri(connectionStr) };
             InitializeRabbitMq();
             //asdas
+            //asdasdasd
         }
 
         private void InitializeRabbitMq()

@@ -21,8 +21,6 @@ namespace PhoneBookService.Messaging
             var connectionStr = "amqp://guest:guest@s_rabbitmq:5672/";
             _connectionFactory = new ConnectionFactory() { Uri = new Uri(connectionStr) };
             InitializeRabbitMq();
-            //asdas
-            //asdasdasd
         }
 
         private void InitializeRabbitMq()

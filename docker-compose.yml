@@ -28,6 +28,7 @@ services:
     build:
       context: .
       dockerfile: src/Services/Consumer/ReportService.ConsumerBg/Dockerfile
+    restart: on-failure
 
 volumes:
   rabbitmq:

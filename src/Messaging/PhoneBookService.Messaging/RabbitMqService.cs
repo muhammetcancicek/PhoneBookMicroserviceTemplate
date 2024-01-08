@@ -29,36 +29,6 @@ namespace PhoneBookService.Messaging
             _channel = connection.CreateModel();
         }
 
-        public void PublishMessage<T>(string queueName, T message)
-        {
-            DeclareQueue(queueName);
-
-            var jsonMessage = JsonSerializer.Serialize(message);
-            var body = Encoding.UTF8.GetBytes(jsonMessage);
-
-            _channel.BasicPublish(exchange: "",
-                                 routingKey: queueName,
-                                 basicProperties: null,
-                                 body: body);
-        }
-
-        public void StartConsumer<T>(string queueName, Action<T> onMessageReceived)
-        {
-            DeclareQueue(queueName);
-
-            var consumer = new EventingBasicConsumer(_channel);
-            consumer.Received += (model, ea) =>
-            {
-                var body = ea.Body.ToArray();
-                var json = Encoding.UTF8.GetString(body);
-                var message = JsonSerializer.Deserialize<T>(json);
-
-                onMessageReceived?.Invoke(message);
-            };
-
-            _channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumer);
-        }
-
         private void DeclareQueue(string queueName)
         {
             _channel.QueueDeclare(queue: queueName,

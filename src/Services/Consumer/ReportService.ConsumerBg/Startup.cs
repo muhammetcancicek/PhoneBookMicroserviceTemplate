@@ -24,7 +24,7 @@ namespace ReportService.ConsumerBg
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
-
+            services.AddHttpClient();
             services.AddSingleton<IMongoClient>(provider =>
 new MongoClient("mongodb+srv://devDbUser:Mcan1973!?@devdatabase.trskelc.mongodb.net/?retryWrites=true&w=majority"));
 

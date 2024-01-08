@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PhoneBookService.Application.DTOs.ContactInfoDTOs;
+using PhoneBookService.Domain.Entities;
 using ReportService.Application.Services.Interfaces;
+using ReportService.Domain.Entities;
 
 namespace ReportService.Api.Controllers
 {
@@ -14,13 +17,25 @@ namespace ReportService.Api.Controllers
             _reportService = reportService;
         }
 
-        [HttpPost]
+        [HttpPost("CreateReportRequest")]
         public async Task<IActionResult> CreateReportRequest()
         {
             var reportId = await _reportService.CreateReportRequest();
             return Ok($"Rapor talebiniz alındı. Rapor ID: {reportId}");
         }
-
+        [HttpPost("CreateReport/{id}")]
+        public async Task<IActionResult> CreateReport(Guid id)
+        {
+            try
+            {
+                await _reportService.CreateReport(id);
+                return CreatedAtAction(nameof(GetReportDetails), new { id = id }, null);
+            }
+            catch (Exception ex)
+            {
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
+        }
         [HttpGet]
         public async Task<IActionResult> GetAllReports()
         {

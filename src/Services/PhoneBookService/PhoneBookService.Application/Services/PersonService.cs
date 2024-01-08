@@ -1,5 +1,6 @@
 ﻿using PhoneBookService.Application.DTOs.ContactInfoDTOs;
 using PhoneBookService.Application.DTOs.PersonDTOs;
+using PhoneBookService.Application.Services.Interfaces;
 using PhoneBookService.Domain.Entities;
 using PhoneBookService.Domain.Interfaces.RepositoryInterfaces;
 using System;

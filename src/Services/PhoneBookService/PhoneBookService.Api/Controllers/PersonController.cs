@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhoneBookService.Application.DTOs.PersonDTOs;
-using PhoneBookService.Application.Services;
+using PhoneBookService.Application.Services.Interfaces;
 
 namespace PhoneBookService.Api.Controllers
 {

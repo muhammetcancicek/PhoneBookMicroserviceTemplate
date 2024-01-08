@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PhoneBookService.Application.Services
+namespace PhoneBookService.Application.Services.Interfaces
 {
     public interface IContactInfoService
     {

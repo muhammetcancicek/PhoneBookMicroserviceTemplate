@@ -4,6 +4,7 @@ using PhoneBookService.Api.Controllers;
 using PhoneBookService.Application.DTOs.ContactInfoDTOs;
 using PhoneBookService.Application.DTOs.PersonDTOs;
 using PhoneBookService.Application.Services;
+using PhoneBookService.Application.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

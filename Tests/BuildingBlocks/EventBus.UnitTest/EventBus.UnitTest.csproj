@@ -33,12 +33,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\ReportService.Api\ReportService.Api.csproj" />
-    <ProjectReference Include="..\..\..\Messaging\PhoneBookService.Messaging\PhoneBookService.Messaging.csproj" />
-    <ProjectReference Include="..\..\..\Services\PhoneBookService\PhoneBookService.Api\PhoneBookService.Api.csproj" />
-    <ProjectReference Include="..\..\..\Services\PhoneBookService\PhoneBookService.Application\PhoneBookService.Application.csproj" />
-    <ProjectReference Include="..\..\..\Services\PhoneBookService\PhoneBookService.Domain\PhoneBookService.Domain.csproj" />
-    <ProjectReference Include="..\..\..\Services\ReportService.Application\ReportService.Application.csproj" />
+    <ProjectReference Include="..\..\..\src\Services\PhoneBookService\PhoneBookService.Api\PhoneBookService.Api.csproj" />
+    <ProjectReference Include="..\..\..\src\Services\PhoneBookService\PhoneBookService.Application\PhoneBookService.Application.csproj" />
+    <ProjectReference Include="..\..\..\src\Services\ReportService\ReportService.Api\ReportService.Api.csproj" />
+    <ProjectReference Include="..\..\..\src\Services\ReportService\ReportService.Application\ReportService.Application.csproj" />
+    <ProjectReference Include="..\..\..\src\Services\ReportService\ReportService.Domain\ReportService.Domain.csproj" />
   </ItemGroup>
 
 </Project>

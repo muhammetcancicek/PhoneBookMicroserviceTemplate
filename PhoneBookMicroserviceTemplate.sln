@@ -30,7 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0AAFF954
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{20D5A570-C021-43EA-8267-C0B3246238B3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.UnitTest", "src\Tests\BuildingBlocks\EventBus.UnitTest\EventBus.UnitTest.csproj", "{AB2B2F0C-2C9B-44B3-8539-45BCEAB84597}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.UnitTest", "Tests\BuildingBlocks\EventBus.UnitTest\EventBus.UnitTest.csproj", "{AB2B2F0C-2C9B-44B3-8539-45BCEAB84597}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService.Domain", "src\Services\ReportService\ReportService.Domain\ReportService.Domain.csproj", "{289A49F6-AD87-420B-A671-5AD4BB83CE2F}"
 EndProject
@@ -40,15 +40,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Messaging", "Messaging", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneBookService.Messaging", "src\Messaging\PhoneBookService.Messaging\PhoneBookService.Messaging.csproj", "{AA06CA6B-BE6A-4384-AA44-2414AEE9D219}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService.Application", "src\Services\ReportService.Application\ReportService.Application.csproj", "{9D0276D3-D02F-4269-88DB-A850B04AB9F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService.Application", "src\Services\ReportService\ReportService.Application\ReportService.Application.csproj", "{9D0276D3-D02F-4269-88DB-A850B04AB9F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService.Api", "ReportService.Api\ReportService.Api.csproj", "{B530A7B4-287F-4F14-88B9-8CEC398EB4D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService.Api", "src\Services\ReportService\ReportService.Api\ReportService.Api.csproj", "{B530A7B4-287F-4F14-88B9-8CEC398EB4D1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9EF0F3E6-2686-4D9F-A434-08FF5F721DBE}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{25187EE5-4DCE-42D5-9702-6FF42335E4BA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService.ConsumerBg", "src\Services\ReportService\ReportService.ConsumerBg\ReportService.ConsumerBg.csproj", "{917D12C0-2716-45C0-9EB9-3753DF9278B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportService.ConsumerBg", "src\Services\Consumer\ReportService.ConsumerBg\ReportService.ConsumerBg.csproj", "{917D12C0-2716-45C0-9EB9-3753DF9278B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consumer", "Consumer", "{010134EA-0E65-4D9C-B8A7-78EF09D981F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,7 +119,6 @@ Global
 		{4195FFB2-EABC-4A82-A655-BB8FE768E089} = {D6B4659C-D191-4433-85EB-2AF69E03BBD6}
 		{190CF4FA-0EDC-4CC1-ACDE-2381DD018F0A} = {D6B4659C-D191-4433-85EB-2AF69E03BBD6}
 		{5C96C441-3D06-4A45-B2B8-1221C7C27E7F} = {D6B4659C-D191-4433-85EB-2AF69E03BBD6}
-		{0AAFF954-5EA1-48E1-B52F-CBB8070A2551} = {F9608617-044F-4CA9-9631-1B74DAC08632}
 		{20D5A570-C021-43EA-8267-C0B3246238B3} = {0AAFF954-5EA1-48E1-B52F-CBB8070A2551}
 		{AB2B2F0C-2C9B-44B3-8539-45BCEAB84597} = {20D5A570-C021-43EA-8267-C0B3246238B3}
 		{289A49F6-AD87-420B-A671-5AD4BB83CE2F} = {B8723DBC-3FD8-48C5-8075-7E8230DD09CF}
@@ -126,7 +127,8 @@ Global
 		{AA06CA6B-BE6A-4384-AA44-2414AEE9D219} = {962FD543-E44F-4BAE-B725-B321EA38B464}
 		{9D0276D3-D02F-4269-88DB-A850B04AB9F1} = {B8723DBC-3FD8-48C5-8075-7E8230DD09CF}
 		{B530A7B4-287F-4F14-88B9-8CEC398EB4D1} = {B8723DBC-3FD8-48C5-8075-7E8230DD09CF}
-		{917D12C0-2716-45C0-9EB9-3753DF9278B5} = {B8723DBC-3FD8-48C5-8075-7E8230DD09CF}
+		{917D12C0-2716-45C0-9EB9-3753DF9278B5} = {010134EA-0E65-4D9C-B8A7-78EF09D981F6}
+		{010134EA-0E65-4D9C-B8A7-78EF09D981F6} = {F9608617-044F-4CA9-9631-1B74DAC08632}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F10EBB64-25EE-4725-B015-82C56FA4E61F}

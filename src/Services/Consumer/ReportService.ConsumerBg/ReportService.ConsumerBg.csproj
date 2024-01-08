@@ -21,9 +21,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Messaging\PhoneBookService.Messaging\PhoneBookService.Messaging.csproj" />
+    <ProjectReference Include="..\..\PhoneBookService\PhoneBookService.Domain\PhoneBookService.Domain.csproj" />
     <ProjectReference Include="..\..\PhoneBookService\PhoneBookService.Infrastructure\PhoneBookService.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\ReportService.Application\ReportService.Application.csproj" />
-    <ProjectReference Include="..\ReportService.Infrastructure\ReportService.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\ReportService\ReportService.Application\ReportService.Application.csproj" />
+    <ProjectReference Include="..\..\ReportService\ReportService.Domain\ReportService.Domain.csproj" />
+    <ProjectReference Include="..\..\ReportService\ReportService.Infrastructure\ReportService.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

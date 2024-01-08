@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using PhoneBookService.Application;
 using PhoneBookService.Application.AutoMapper;
 using PhoneBookService.Application.Services;
+using PhoneBookService.Application.Services.Interfaces;
 using PhoneBookService.Domain.Interfaces.RepositoryInterfaces;
 using PhoneBookService.Infrastructure;
 using PhoneBookService.Infrastructure.Repositoryes;

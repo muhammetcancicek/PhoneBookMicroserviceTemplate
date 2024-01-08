@@ -17,6 +17,7 @@ namespace EventBus.UnitTest
     using System.Collections.Generic;
     using static PhoneBookService.Domain.Enums.Enums;
     using PhoneBookService.Domain.Entities;
+    using PhoneBookService.Application.Services.Interfaces;
 
     public class ContactInfoControllerTests
     {

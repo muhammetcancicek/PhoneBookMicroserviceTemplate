@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PhoneBookService.Application.DTOs.ContactInfoDTOs;
-using PhoneBookService.Application.Services;
+using PhoneBookService.Application.Services.Interfaces;
 
 namespace PhoneBookService.Api.Controllers
 {

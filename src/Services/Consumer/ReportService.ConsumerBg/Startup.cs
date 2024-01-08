@@ -6,7 +6,6 @@ using ReportService.Domain.Interfaces;
 using ReportService.Infrastructure.Repositories;
 using PhoneBookService.Infrastructure.Repositoryes;
 using PhoneBookService.Domain.Interfaces.RepositoryInterfaces;
-using PhoneBookService.Messaging;
 using ReportService.ConsumerBg.ConsumerService;
 
 namespace ReportService.ConsumerBg
